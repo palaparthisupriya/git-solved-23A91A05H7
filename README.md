@@ -127,3 +127,4 @@ See `/docs` folder and `/docs/ai-integration.md`
 MIT License
 >>>>>>> instructor/conflict-simulator
 ## FAQ
+update
