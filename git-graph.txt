@@ -1,0 +1,18 @@
+* 603b96c (feature/another-feature) Bad commit
+| * 3c7ce4b (origin/feature/another-feature) docs:update README
+|/  
+* fb8c63a feat:Add test feature
+* e87ced0 (HEAD -> main, tag: v1.1.0, tag: v1.0.0, origin/main) docs:Add FAQ section
+| * e5af247 (origin/feature/new-feature, feature/new-feature) feat: Add new feature
+|/  
+*   a786286 Resolved all merge conflicts for phase3
+|\  
+| * d3dd9b2 (instructor/conflict-simulator) updating conflict-simulator
+* |   92807d8 merge:Resolve all conflicts between main and dev branches Conflicts resolved in 6 files: -config/app-config.yaml:Combined production and development configurations -config/databse-config.json:Created separate profiles for each environment -scripts/deploy.sh:Added multi-environment support with conditional logic -scripts/monitor.js:Implemented environment-based configuration -docs/architecture.md:Merged documentation covering both environments README.md:Combined feature lists and updated documentation
+|\ \  
+| * | 02011a5 (instructor/dev, dev) updating dev
+| |/  
+* | 0312c6f (instructor/main, instructor/HEAD) updating main
+* | fadfd24 Revise README for DevOps Simulator project
+|/  
+* ae630eb Initial commit
