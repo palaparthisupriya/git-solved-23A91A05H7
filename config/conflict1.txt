@@ -1,0 +1,21 @@
+application:
+  name: DevOpsSimulator
+  version: 1.0.0
+  environment: production
+  
+server:
+  host: 0.0.0.0
+  port: 8080
+  ssl_enabled: true
+  
+logging:
+  level: INFO
+  format: json
+  
+# Development configuration (enabled via environment variable)
+development:
+  enabled: false
+  port: 3000
+  hot_reload: false
+  debug_mode: false
+  mock_apis: false
