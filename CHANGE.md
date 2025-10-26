@@ -1,0 +1,8 @@
+ - e87ced0: docs:Add FAQ section (Supriya,49 minutes ago)
+ - a786286: Resolved all merge conflicts for phase3 (Supriya,59 minutes ago)
+ - 92807d8: merge:Resolve all conflicts between main and dev branches Conflicts resolved in 6 files: -config/app-config.yaml:Combined production and development configurations -config/databse-config.json:Created separate profiles for each environment -scripts/deploy.sh:Added multi-environment support with conditional logic -scripts/monitor.js:Implemented environment-based configuration -docs/architecture.md:Merged documentation covering both environments README.md:Combined feature lists and updated documentation (Supriya,78 minutes ago)
+ - d3dd9b2: updating conflict-simulator (Hanu Gupta,3 days ago)
+ - 02011a5: updating dev (Hanu Gupta,3 days ago)
+ - 0312c6f: updating main (Hanu Gupta,3 days ago)
+ - fadfd24: Revise README for DevOps Simulator project (Hanu Gupta,3 days ago)
+ - ae630eb: Initial commit (Hanu Gupta,3 days ago)

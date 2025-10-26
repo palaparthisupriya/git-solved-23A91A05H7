@@ -1,0 +1,106 @@
+/**
+ * DevOps Simulator System Monitoring Script
+ * Supports Production, Development, and Experimental AI modes
+ */
+
+const monitorConfig = {
+  environment: process.env.NODE_ENV || 'production', // production, development, experimental
+  production: {
+    interval: 60000,
+    alertThreshold: 80,
+    metricsEndpoint: 'http://localhost:8080/metrics'
+  },
+  development: {
+    interval: 5000,
+    alertThreshold: 90,
+    metricsEndpoint: 'http://localhost:3000/metrics',
+    debugMode: true,
+    verboseLogging: true
+  },
+  experimental: {
+    interval: 30000,
+    alertThreshold: 75,
+    metricsEndpoint: 'http://localhost:9000/metrics',
+    aiEnabled: true,
+    mlModelPath: './models/anomaly-detection.h5',
+    cloudProviders: ['aws', 'azure', 'gcp'],
+    predictiveWindow: 300 // 5 min ahead
+  }
+};
+
+console.log('=================================');
+console.log(`DevOps Simulator - Monitor (${monitorConfig.environment.toUpperCase()})`);
+console.log('=================================');
+
+function checkSystemHealth() {
+  const env = monitorConfig.environment;
+  const config = monitorConfig[env];
+  const timestamp = new Date().toISOString();
+
+  console.log(`\n[${timestamp}] Health check for ${env} environment:`);
+
+  // Production / Development basic metrics
+  let cpuUsage = Math.random() * 100;
+  let memUsage = Math.random() * 100;
+  let diskUsage = Math.random() * 100;
+
+  if (env === 'development') {
+    if (config.debugMode) {
+      console.log('Detailed Development Checks Enabled:');
+      console.log('✓ Hot reload: Active');
+      console.log('✓ Debug port: 9229');
+      console.log('✓ Source maps: Enabled');
+    }
+  }
+
+  if (env === 'experimental' && config.aiEnabled) {
+    console.log('🤖 AI Predictive Monitoring Enabled');
+    console.log('Loading AI model:', config.mlModelPath);
+    // Simulated ML prediction
+    console.log('Predicting future metrics...');
+    console.log(`   CPU: ${cpuUsage.toFixed(2)}%`);
+    console.log(`   Memory: ${memUsage.toFixed(2)}%`);
+    console.log(`   Disk: ${diskUsage.toFixed(2)}%`);
+    console.log('Cloud monitoring:');
+    config.cloudProviders.forEach(cloud => console.log(`   ${cloud.toUpperCase()}: OK`));
+  }
+
+  // Determine overall status
+  const maxUsage = Math.max(cpuUsage, memUsage, diskUsage);
+  if (maxUsage > config.alertThreshold) {
+    console.log('⚠️  System Status: WARNING - High resource usage');
+    if (env === 'experimental') console.log('AI auto-scaling triggered');
+  } else {
+    console.log('✅ System Status: HEALTHY/OPTIMAL');
+  }
+
+  if (env === 'development' && config.verboseLogging) {
+    console.log(`Next check in ${config.interval}ms`);
+  }
+}
+
+// Start monitoring
+const envConfig = monitorConfig[monitorConfig.environment];
+console.log(`Monitoring interval: ${envConfig.interval}ms`);
+setInterval(checkSystemHealth, envConfig.interval);
+
+// Run first check immediately
+checkSystemHealth();
+
+// Optional background tasks
+if (monitorConfig.environment === 'development' && envConfig.debugMode) {
+  setInterval(() => {
+    const memUsage = process.memoryUsage();
+    console.log('\n--- Memory Usage ---');
+    console.log(`RSS: ${(memUsage.rss / 1024 / 1024).toFixed(2)} MB`);
+    console.log(`Heap Used: ${(memUsage.heapUsed / 1024 / 1024).toFixed(2)} MB`);
+  }, 30000);
+}
+
+if (monitorConfig.environment === 'experimental' && envConfig.aiEnabled) {
+  setInterval(() => {
+    console.log('\n🎓 AI Model: Retraining on new data...');
+    console.log('   Training accuracy: 94.7%');
+    console.log('   Model updated successfully');
+  }, 120000); // Every 2 minutes
+}

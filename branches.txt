@@ -1,5 +1,6 @@
   dev
   feature/another-feature
+  feature/misc-commits
   feature/new-feature
 * main
   remotes/instructor/HEAD -> instructor/main
